@@ -41,7 +41,7 @@ public class BookRepository {
 	
 	public List<Book> findAll() {
 		List<Book> books = jdbcTemplate.query(
-				"SELECT id,name,author,publisher,price,isbncode,saledate,explanation,image,stock FROM books", 
+				"SELECT id,name,author,publisher,price,isbncode,saledate,explanation,image,stock FROM books order by saledate", 
 				BOOK_ROW_MAPPER);
 		return books;
 	}
