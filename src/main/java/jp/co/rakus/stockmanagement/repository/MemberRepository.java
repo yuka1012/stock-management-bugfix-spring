@@ -79,7 +79,7 @@ public class MemberRepository {
 	 * @return　メンバー
 	 */
 	public Member findByMailAddress(String mailAddress){
-		String sql="select id,name,mail_address,password from members where mailAddress=:mailAddress";
+		String sql="select id,name,mail_address,password from members where mail_address=:mailAddress";
 		SqlParameterSource param=new MapSqlParameterSource().addValue("mailAddress", mailAddress);
 		Member member=null;
 		try{

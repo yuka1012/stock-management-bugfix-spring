@@ -55,12 +55,24 @@ public class MemberController {
 	public String create(@Validated MemberForm form, 
 			BindingResult result,
 			Model model) {
+		
+			
+			Member member=memberService.findByMailAddress(form.getMailAddress());
+		
+		if(member!=null){
+			result.rejectValue("mailAddress", null, "既に登録されているメールアドレスです");
+		}
+		if(!form.getPassword().equals(form.getCheckPassword())){
+			result.rejectValue("checkPassword", null, "パスワードが異なっています");
+		}
 		if(result.hasErrors()){
 			return "/member/form";
 		}
-		Member member2 = new Member();
-		BeanUtils.copyProperties(form, member2);
-		memberService.save(member2);
+		Member newMember=new Member();
+		newMember.setName(form.getName());
+		newMember.setMailAddress(form.getMailAddress());
+		newMember.setPassword(form.getPassword());
+		memberService.save(newMember);
 		return "redirect:/";
 	}
 	
