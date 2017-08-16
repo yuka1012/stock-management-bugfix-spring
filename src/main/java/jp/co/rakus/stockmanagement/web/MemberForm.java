@@ -1,5 +1,7 @@
 package jp.co.rakus.stockmanagement.web;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * メンバー関連のリクエストパラメータが入るフォーム.
  * @author igamasayuki
@@ -7,10 +9,13 @@ package jp.co.rakus.stockmanagement.web;
  */
 public class MemberForm {
 	/** 名前 */
+	@NotBlank(message="名前を入力してください")
 	private String name;
 	/** メールアドレス */
+	@NotBlank(message="メールアドレスを入力してください")
 	private String mailAddress;
 	/** パスワード */
+	@NotBlank(message="パスワードを入力してください")
 	private String password;
 	public String getName() {
 		return name;
