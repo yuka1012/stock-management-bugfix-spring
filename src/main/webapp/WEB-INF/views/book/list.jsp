@@ -24,6 +24,7 @@
 
 
 		</div>
+		<a href="${pageContext.request.contextPath }/">戻る</a>
 	</div>
 </div>
 </body>
